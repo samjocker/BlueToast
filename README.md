@@ -42,8 +42,8 @@ BLEDevice::init("espDevice");
 
     圖標庫是使用蘋果系統內建的[SF Symbols](https://developer.apple.com/sf-symbols/)所以搜尋時需使用英文名稱搜尋，此圖標庫有5000多個圖標，若找不到理想icon時可以多換關鍵字搜尋，例如燈相關可以搜尋"light"之類的單字。
 
-<img src="image/editPage.jpeg" width="150">
+    <img src="image/editPage.jpeg" width="150">
 
 11. 想要刪除或編輯按鈕的話長按按鈕即可叫出選單選擇
 
-<img src="image/contentButton.PNG" width="150">
+    <img src="image/contentButton.PNG" width="150">
