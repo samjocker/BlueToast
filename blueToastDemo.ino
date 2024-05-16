@@ -5,13 +5,17 @@
 
 BLEServer *pServer = NULL;
 BLECharacteristic * pTxCharacteristic;
+String stringValue = "";
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
 uint8_t value[2];
-#define pin LED_BUILTIN
-#define service_uuid "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"
-#define rx_uuid "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
-#define tx_uuid "6E400003-B5A3-F393-E0A9-E50E24DCCA9A"
+#define testPin 15 // 測試腳位
+// ↓ 請至 https://www.uuidgenerator.net/ 自行產生一組 UUID
+#define myUuid "aaaaaaae-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+// 	↑請將上方字串更換為自己的 UUID
+#define service_uuid myUuid
+#define rx_uuid myUuid
+#define tx_uuid myUuid
 
 class MyServerCallbacks: public BLEServerCallbacks{
   void onConnect(BLEServer* pServer){
@@ -45,9 +49,11 @@ class MyCallbacks: public BLECharacteristicCallbacks {
 
 
 void setup() {
-  pinMode(pin, OUTPUT);
+  pinMode(testPin, OUTPUT);
   Serial.begin(115200);
-  BLEDevice::init("esp");
+  // 裝置名稱↓ 
+  BLEDevice::init("espDevice");
+  // 裝置名稱↑
   pServer = BLEDevice::createServer();
   pServer->setCallbacks(new MyServerCallbacks());
   BLEService *pService = pServer->createService(service_uuid);
@@ -66,11 +72,14 @@ void loop(){
     pTxCharacteristic->notify();
 		delay(10);
 	}
-	if (value[0] == 0x01) {
-	  digitalWrite(pin, 1);
-  }else{
-	  digitalWrite(pin, 0);
+  // ----------------- ↓ 自定義功能區↓  -----------------
+  // 以下為開燈範例，請自己撰寫所需功能
+	if (stringValue == "lightOn") {
+	  digitalWrite(testPin, 1);
+  } else if (stringValue == "lightOff") {
+	  digitalWrite(testPin, 0);
 	}
+  // ----------------- ↑ 自定義功能區↑  -----------------
  
 	if (!deviceConnected && oldDeviceConnected) {
 	  delay(500);
