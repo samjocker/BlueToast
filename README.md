@@ -20,7 +20,7 @@ BLEDevice::init("espDevice");
   // 以下為開燈範例，請自己撰寫所需功能
 	if (stringValue == "lightOn") {
 	  digitalWrite(testPin, 1);
-  } else if (stringValue == "lightOff") {
+    } else if (stringValue == "lightOff") {
 	  digitalWrite(testPin, 0);
 	}
   // ----------------- ↑ 自定義功能區↑  -----------------
