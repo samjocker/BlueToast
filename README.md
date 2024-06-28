@@ -1,5 +1,9 @@
-# 如何使用Ios設備控制藍牙開發板
+# 如何使用iOS設備控制藍牙開發板
 本文章使用esp32作為範例
+
+#### 以下所有測試皆使用ESP32 typeC版本進行驗證
+<img src="image/esp32Demo.png" height=220px>
+
 ## 方法
 1. 將上方blueToastDemo資料夾下載並開啟(不熟悉GitHub操作的話可以至文章底部複製)
 2. 到例如 https://www.uuidgenerator.net/  之類的UUID生成網站產生一份UUID，並將此行UUID替換掉
@@ -48,7 +52,25 @@ BLEDevice::init("espDevice");
 
     <img src="image/contentButton.PNG" width="150">
 
-### 完整範例程式
+## 常見問題
+
+**Q:** Arduino IDE板子選單中沒有看到任何一個ESP32板子
+
+**A:** 可以參考[此篇教學](https://www.nmking.io/index.php/2022/09/13/112/#htoc-esp321)進行設定
+
+---
+
+**Q:**  程式沒有報錯但沒有辦法燒入進去
+
+**A:** 先確認板子型號是否正確，正確的話可以嘗試在Arduino IDE上方選單 編輯>>上傳速率(Upload Speed) 改為115200嘗試看看，大概率都是上傳速率的問題，而本文章使用的ESP32是選用"ESP32 Dev Module"進行燒入
+
+---
+
+**Q:** 不如吐司有Bug或是想要增加什麼功能該怎麼辦？
+
+**A:** 可以上[xamjiang.com/contact](https://xamjiang.com/contact)聯絡開發者，或是透過GitHub issues都可以，開發者人好的程度滿分五顆心他大概有六顆心，所以都很歡迎提出指教😚
+
+## 完整範例程式
 ```c
 #include <BLEDevice.h>
 #include <BLEServer.h>
