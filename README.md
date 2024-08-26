@@ -70,6 +70,12 @@ BLEDevice::init("espDevice");
 
 **A:** 可以上[xamjiang.com/contact](https://xamjiang.com/contact)聯絡開發者，或是透過GitHub issues都可以，開發者人好的程度滿分五顆心他大概有六顆心，所以都很歡迎提出指教😚
 
+---
+
+**Q:** 其他玄學問題
+
+**A:** 放置[乖乖](https://www.kuai.com.tw/home.jsp?lang=tw)於開發板旁即可(Maybe)
+
 ## 完整範例程式
 ```c
 #include <BLEDevice.h>
